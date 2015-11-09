@@ -1,7 +1,7 @@
 (function(definition){
     "use strict";
 
-    var moduleName = "Collapse";
+    var moduleName = "uiCollapse";
 
     var root = (typeof self === "object" && self.self === self && self) || (typeof global === "object" && global.global === global && global);
 
@@ -56,14 +56,14 @@
      * @prop {array} instance
      * @namespace
      */
-    function Factory(param){
+    function factory(param){
         var rootElement = ".js-collapse";
         var opt = existy(param) ? param : {};
 
         var $self = $(rootElement);
         if (existy(opt.root)) $self = opt.root instanceof jQuery ? param.root : $(param.root);
 
-        this[0] = $self.map(function(key, val){ return new Module(opt, val); });
+        return $self.map(function(key, val){ return new Module(opt, val); });
     }
 
 
@@ -147,6 +147,6 @@
         return self;
     };
 
-    return Factory;
+    return factory;
 });
 
